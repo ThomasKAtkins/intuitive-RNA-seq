@@ -1,10 +1,4 @@
 about <- tabPanel("About",
-sidebarLayout(
-  sidebarPanel(
-  ),
-  
-  #This is where the main output goes
-  mainPanel(
-    h1("yeet")
-  )
-))
+        h1("About"),
+        p("Intuitive RNA-Seq is a project developed for the 2021 IQBIO REU hackathon by Ashmika Behere, Stanton Li, Miguel Hernandez, and Thomas Atkins.")
+)

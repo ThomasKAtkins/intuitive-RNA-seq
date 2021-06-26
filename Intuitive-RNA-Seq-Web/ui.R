@@ -10,6 +10,7 @@
 library(shiny)
 
 source('mainpage.R')
+source('format.R')
 source('about.R')
 
 # Define UI for application that draws a histogram
@@ -17,6 +18,7 @@ shinyUI(fluidPage(
   navbarPage(
     "Intuitive RNA-Seq",
         mainpage,
+        format,
         about
     )
 ))

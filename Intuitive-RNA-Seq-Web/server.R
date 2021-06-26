@@ -32,5 +32,7 @@ shinyServer(function(input, output) {
         paste(strsplit(input$interest_genes, "\n"))
     })
 
-
+    output$example_dataset <- renderTable({
+        read.csv("example_dataset.csv")
+    })
 })
