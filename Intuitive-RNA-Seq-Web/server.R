@@ -8,21 +8,29 @@
 #
 
 library(shiny)
+library(dplyr)
 
 shinyServer(function(input, output) {
 
-    #outputs the head of the dataset
     output$dataset_output <- renderTable({
+        table_reactive()
+    })
+    
+    table_reactive <- eventReactive( input$run, {
         req(input$input_csv)
-        
-        print(input$input_csv$datapath)
-        head(read.csv(input$input_csv$datapath))
+        dataset <- read.csv(input$input_csv$datapath)
+        dataset %>% filter(GeneID %in% strsplit(input$interest_genes, "\n")[[1]])
     })
     
     #outputs the head of the dataset
     output$genes_of_interest <- renderText({
+        genes_reactive()
+    })
+    
+    genes_reactive <- eventReactive( input$run, {
         req(input$interest_genes)
         paste(strsplit(input$interest_genes, "\n"))
     })
+
 
 })

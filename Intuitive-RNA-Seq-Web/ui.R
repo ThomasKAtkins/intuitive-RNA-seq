@@ -9,24 +9,14 @@
 
 library(shiny)
 
+source('mainpage.R')
+source('about.R')
+
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
-
-    # Application title
-    titlePanel("Intuitive RNA-Seq Web Interface"),
-
-    # Sidebar where the user can input their files as well as their different parameters
-    sidebarLayout(
-        sidebarPanel(
-            fileInput("input_csv", h3("Input a .csv file")),
-            textAreaInput("interest_genes", "Genes of Interest (seperated by line breaks)"),
-            actionButton("newplot", "Submit")
-        ),
-
-        #This is where the main output goes
-        mainPanel(
-            tableOutput("dataset_output"),
-            textOutput("genes_of_interest")
-        )
+  navbarPage(
+    "Intuitive RNA-Seq",
+        mainpage,
+        about
     )
 ))
